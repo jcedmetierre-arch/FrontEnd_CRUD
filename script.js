@@ -11,8 +11,7 @@ submit.addEventListener("click", () => {
     let itemCode = document.querySelector("#itemCode").value;
     let originalPrice = document.querySelector("#originalPrice").value;
     let discountPrice = document.querySelector("#discountPrice").value;
-    let stockAvailability = document.querySelector("#stockAvailability").value;
-    let formData = { itemName, itemCode, originalPrice, discountPrice, stockAvailability };
+    let formData = { itemName, itemCode, originalPrice, discountPrice };
 
     fetch("http://localhost:5000/api/users", {
         method: "POST",
