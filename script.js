@@ -14,7 +14,7 @@ submit.addEventListener("click", () => {
     let stockAvailability = document.querySelector("#stockAvailability").value;
     let formData = { itemName, itemCode, originalPrice, discountPrice, stockAvailability };
 
-    fetch("https://console.clever-cloud.com/organisations/user_83944f95-17dd-4a4c-b198-4367db695b4e/addons/mysql/addon_a5387d3d-6ebe-49f6-b3c9-c54a413db312", {
+    fetch("http://localhost:5000/api/users", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {
@@ -36,7 +36,7 @@ window.addEventListener("load", () => {
 function getUsers(){
     let html=""
     //FETCH API
-    fetch('https://console.clever-cloud.com/organisations/user_83944f95-17dd-4a4c-b198-4367db695b4e/addons/mysql/addon_a5387d3d-6ebe-49f6-b3c9-c54a413db312',{mode:'cors'})
+    fetch('http://localhost:5000/api/users',{mode:'cors'})
     .then(response=>{
         console.log(response);
         return response.json();
@@ -86,7 +86,7 @@ function getUsers(){
 
 function deleteMember(id){
     if(confirm("Are you sure you want to delete this user?")){
-        fetch('https://console.clever-cloud.com/organisations/user_83944f95-17dd-4a4c-b198-4367db695b4e/addons/mysql/addon_a5387d3d-6ebe-49f6-b3c9-c54a413db312',{
+        fetch('http://localhost:5000/api/users',{
             method: 'DELETE',
             body: JSON.stringify({id}),
             headers:{
@@ -103,7 +103,7 @@ function deleteMember(id){
 }
 
 function searchMember(id){
-    fetch(`https://console.clever-cloud.com/organisations/user_83944f95-17dd-4a4c-b198-4367db695b4e/addons/mysql/addon_a5387d3d-6ebe-49f6-b3c9-c54a413db312${id}`)
+    fetch(`http://localhost:5000/api/users${id}`)
     .then(response=> response.json())
     .then(data=>{
     document.querySelector('#itemName').value=data[0].itemName;
@@ -130,7 +130,7 @@ update.addEventListener(`click`,()=>{
     let formData = {itemName, itemCode, originalPrice, discountPrice, itemImage,id:ID};
 
     if(confirm("Are you sure you want to update this user?")){
-        fetch(`https://console.clever-cloud.com/organisations/user_83944f95-17dd-4a4c-b198-4367db695b4e/addons/mysql/addon_a5387d3d-6ebe-49f6-b3c9-c54a413db312`,{
+        fetch(`http://localhost:5000/api/users`,{
         method: 'PUT',
         body: JSON.stringify(formData),
         headers:{
