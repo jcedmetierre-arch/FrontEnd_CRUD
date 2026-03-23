@@ -12,6 +12,11 @@ submit.addEventListener("click", () => {
     let originalPrice = document.querySelector("#originalPrice").value;
     let discountPrice = document.querySelector("#discountPrice").value;
     let itemImage = document.querySelector("#itemImage").value;
+
+    if (discountPrice === "") {
+    discountPrice = 0; 
+}
+
     let formData = { itemName, itemCode, originalPrice, discountPrice, itemImage };
 
     fetch("https://backend-crud-idjh.onrender.com/api/users", {
@@ -127,6 +132,10 @@ update.addEventListener(`click`,()=>{
     let discountPrice = document.querySelector("#discountPrice").value;
     let itemImage = document.querySelector("#itemImage").value;
     let ID = document.querySelector("#ID").value;
+
+    if (discountPrice === "") {
+    discountPrice = 0; 
+}
     let formData = {itemName, itemCode, originalPrice, discountPrice, itemImage,id:ID};
 
     if(confirm("Are you sure you want to update this user?")){
