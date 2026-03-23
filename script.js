@@ -14,7 +14,7 @@ submit.addEventListener("click", () => {
     let itemImage = document.querySelector("#itemImage").value;
     let formData = { itemName, itemCode, originalPrice, discountPrice, itemImage };
 
-    fetch("http://localhost:5000/api/users", {
+    fetch("https://backend-crud-idjh.onrender.com/api/users", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {
@@ -36,7 +36,7 @@ window.addEventListener("load", () => {
 function getUsers(){
     let html=""
     //FETCH API
-    fetch('http://localhost:5000/api/users',{mode:'cors'})
+    fetch('https://backend-crud-idjh.onrender.com/api/users',{mode:'cors'})
     .then(response=>{
         console.log(response);
         return response.json();
@@ -86,7 +86,7 @@ function getUsers(){
 
 function deleteMember(id){
     if(confirm("Are you sure you want to delete this user?")){
-        fetch('http://localhost:5000/api/users',{
+        fetch('https://backend-crud-idjh.onrender.com/api/users',{
             method: 'DELETE',
             body: JSON.stringify({id}),
             headers:{
@@ -103,7 +103,7 @@ function deleteMember(id){
 }
 
 function searchMember(id){
-    fetch(`http://localhost:5000/api/users/${id}`)
+    fetch(`https://backend-crud-idjh.onrender.com/api/users/${id}`)
     .then(response=> response.json())
     .then(data=>{
     document.querySelector('#itemName').value=data[0].itemName;
@@ -130,7 +130,7 @@ update.addEventListener(`click`,()=>{
     let formData = {itemName, itemCode, originalPrice, discountPrice, itemImage,id:ID};
 
     if(confirm("Are you sure you want to update this user?")){
-        fetch(`http://localhost:5000/api/users`,{
+        fetch(`https://backend-crud-idjh.onrender.com/api/users`,{
         method: 'PUT',
         body: JSON.stringify(formData),
         headers:{
