@@ -11,7 +11,8 @@ submit.addEventListener("click", () => {
     let itemCode = document.querySelector("#itemCode").value;
     let originalPrice = document.querySelector("#originalPrice").value;
     let discountPrice = document.querySelector("#discountPrice").value;
-    let formData = { itemName, itemCode, originalPrice, discountPrice };
+    let itemImage = document.querySelector("#itemImage").value;
+    let formData = { itemName, itemCode, originalPrice, discountPrice, itemImage };
 
     fetch("http://localhost:5000/api/users", {
         method: "POST",
@@ -102,7 +103,7 @@ function deleteMember(id){
 }
 
 function searchMember(id){
-    fetch(`http://localhost:5000/api/users${id}`)
+    fetch(`http://localhost:5000/api/users/${id}`)
     .then(response=> response.json())
     .then(data=>{
     document.querySelector('#itemName').value=data[0].itemName;
